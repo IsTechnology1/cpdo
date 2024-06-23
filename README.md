@@ -5,17 +5,8 @@ Cpdo
 > tips:开发目标是为了在termux中执行非私有目录下的程序
 > 
 你可以使用下面的一键配置指来配置cpdo到系统内:
-不加速:
 ```
-curl -o /usr/bin/cpdo https://raw.githubusercontent.com/IsTechnology1/cpdo/main/lasted/cpdo && chmod +x /usr/bin/cpdo && [ -x /usr/bin/cpdo ] && echo -e "\e[32m下载成功\e[0m 使用cpdo命令继续" || echo -e "\e[31m下载失败！\e[0m"
-```
-中国加速链接1:
-```
-curl -o /usr/bin/cpdo https://github.moeyy.xyz/https://raw.githubusercontent.com/IsTechnology1/cpdo/main/lasted/cpdo && chmod +x /usr/bin/cpdo && [ -x /usr/bin/cpdo ] && echo -e "\e[32m下载成功\e[0m 使用cpdo命令继续" || echo -e "\e[31m下载失败！\e[0m"
-```
-中国加速链接2:
-```
-curl -o /usr/bin/cpdo https://gitdl.cn/https://raw.githubusercontent.com/IsTechnology1/cpdo/main/lasted/cpdo && chmod +x /usr/bin/cpdo && [ -x /usr/bin/cpdo ] && echo -e "\e[32m下载成功\e[0m 使用cpdo命令继续" || echo -e "\e[31m下载失败！\e[0m"
+curl https://raw.githubusercontent.com/IsTechnology1/cpdo/main/lasted/setup"
 ```
 
 特性:
