@@ -1,0 +1,95 @@
+#!/bin/bash
+
+VERSION="2.7"
+DEFAULT_DIR="/root/cpdo/"
+
+show_help() {
+    echo "用法: cpdo <文件名> [-s] [-d] [-m] [-h]"
+    echo "  -s : 使用 screen 执行文件。"
+    echo "  -d : 执行完成后删除复制过来的文件。"
+    echo "  -h : 显示帮助信息。"
+    echo "版本: $VERSION"
+}
+
+# 创建目录的函数，如果不存在的话
+create_directories() {
+    if [ ! -d "$DEFAULT_DIR" ]; then
+        mkdir -p "$DEFAULT_DIR"
+    fi
+}
+
+# 如果没有参数，则显示帮助信息并退出
+if [ $# -eq 0 ]; then
+    show_help
+    exit 1
+fi
+
+# 创建默认目录和临时目录
+create_directories
+
+USE_SCREEN=false
+DELETE_AFTER=false
+
+# 处理命令行选项
+while getopts ":sdmh" opt; do
+    case $opt in
+        s)
+            USE_SCREEN=true
+            ;;
+        d)
+            DELETE_AFTER=true
+            ;;
+        h)
+            show_help
+            exit 0
+            ;;
+        \?)
+            echo "无效选项: -$OPTARG" >&2
+            show_help
+            exit 1
+            ;;
+    esac
+done
+
+# 移动到下一个参数
+shift $((OPTIND - 1))
+
+# 检查是否提供了文件名参数
+if [ -z "$1" ]; then
+    echo "错误: 缺少文件名参数。"
+    show_help
+    exit 1
+fi
+
+# 文件名参数赋值
+FILENAME="$1"
+TARGET_DIR="$DEFAULT_DIR"
+
+# 检查文件是否存在
+if [ ! -f "$FILENAME" ]; then
+    echo "错误: 文件 '$FILENAME' 不存在。"
+    exit 1
+fi
+
+# 根据是否使用 screen 显示不同信息
+if [ "$USE_SCREEN" = true ]; then
+    echo "使用 screen 执行文件 $FILENAME。"
+else
+    echo "执行文件 $FILENAME。"
+fi
+
+# 复制文件到目标目录
+cp "$FILENAME" "$TARGET_DIR"
+BASENAME=$(basename "$FILENAME")
+chmod +x "${TARGET_DIR}${BASENAME}"
+
+# 在目标目录执行文件
+cd "$TARGET_DIR" || exit 1
+"./$BASENAME"
+
+# 如果使用删除选项，则删除文件
+if [ "$DELETE_AFTER" = true ]; then
+    rm "$TARGET_DIR$BASENAME"
+fi
+
+exit 0
