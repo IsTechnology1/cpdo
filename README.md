@@ -6,7 +6,7 @@ Cpdo
 > 
 你可以使用下面的一键配置指来配置cpdo到系统内:
 ```
-curl https://raw.githubusercontent.com/IsTechnology1/cpdo/main/lasted/setup"
+bash <(curl https://raw.githubusercontent.com/IsTechnology1/cpdo/main/lasted/setup)
 ```
 
 特性:
