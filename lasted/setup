@@ -1,0 +1,1 @@
+curl -o /usr/bin/cpdo https://raw.githubusercontent.com/IsTechnology1/cpdo/main/lasted/cpdo && chmod +x /usr/bin/cpdo && [ -x /usr/bin/cpdo ] && echo -e "\e[32m下载成功\e[0m 使用cpdo命令继续" || echo -e "\e[31m下载失败！\e[0m"
