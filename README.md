@@ -1,4 +1,5 @@
-#Cpdo
+Cpdo
+
 cpdo 是一个 Bash 脚本，旨在简化将文件复制到指定目录并执行的过程。它支持使用 screen 执行文件，并提供可选项在执行后删除复制的文件。
 
 特性:
@@ -30,7 +31,6 @@ chmod +x cpdo
 许可证
 本项目使用 GNU General Public License v3.0 许可。详细信息请查看 LICENSE 文件。
 
-作者
 作者：IsTechnology
 
 
